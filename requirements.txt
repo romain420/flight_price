@@ -1,3 +1,4 @@
 pymongo
 jupyter
 pandas
+selenium
