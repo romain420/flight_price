@@ -5,6 +5,7 @@ import datetime
 from bs4 import BeautifulSoup
 import requests
 import re
+from mongo_pipe import data_pipe
 
 def open_flight(start, destination, debut, duration):
     #set-up des deffierent parametre d'ouverture du navigateur
@@ -33,12 +34,15 @@ def open_flight(start, destination, debut, duration):
     #grace a la variable 'soup' nous cherchons les prix grace au balise et au ''class'
     # price_list = soup.find_all('span', attrs={'class' : 'price-text'})
     # price_list = soup.find_all('span', class_ = 'price-text')
+
+    ################################################################
+    #recupreration des prix de vol
     price_list = soup.find_all('div', class_ = 'col-price result-column js-no-dtog')
 
     #nettoyage de la variable 'price_list' pour recuperer le prix du billet et le caster en 'int' dans la list price
     price =[]
     for i in range(len(price_list)):
-        value = price_list[i].getText().split('\n')[30]
+        value = price_list[i].getText().split()[2]
         value = int(re.sub("[\n $,]", '', value))#int()
         price.append(value)
     # price = price[:16] 
@@ -113,6 +117,7 @@ def open_flight(start, destination, debut, duration):
                       })
 
     df['date recup data'] = datetime.datetime.now()
+    df['id_flight'] = start+"_"+destination+"_"+debut_str+"_"+fin
 
     #fermeture du navigateur 
     #browser.close()
@@ -133,3 +138,4 @@ if __name__ == '__main__':
     df = open_flight(start, arrive, debut, 5)
     print(df)
     print(df.dtypes)
+    data_pipe(df)
