@@ -10,8 +10,8 @@ import schedule
 import time
 from apscheduler.schedulers.blocking import BlockingScheduler
 
-# def open_flight(start, destination, debut, duration):
-def open_flight():
+def open_flight(start, destination, debut, duration):
+# def open_flight():
     #set-up des deffierent parametre d'ouverture du navigateur
     driver_path = "/home/eadnoth/flight_price/chromedriver"
     # brave_path = "/usr/bin/brave-browser"
@@ -27,12 +27,12 @@ def open_flight():
     browser = webdriver.Chrome(executable_path=driver_path, chrome_options=option)
     
     #determination de la date de fin du voyage
-    # fin = debut + timedelta(days = duration)
-    # fin = fin.strftime("%Y-%m-%d")
+    fin = debut + timedelta(days = duration)
+    fin = fin.strftime("%Y-%m-%d")
 
     #generation de l'url du vol attendu
-    # url = "https://www.kayak.com/flights/"+ start + "-" + destination + "/" + debut_str+ "/" + fin + "?sort=bestflight_a&fs"
-    url = "https://www.kayak.com/flights/CDG-JFK/2022-01-16/2022-01-21?sort=bestflight_a&fs"
+    url = "https://www.kayak.com/flights/"+ start + "-" + destination + "/" + debut_str+ "/" + fin + "?sort=bestflight_a&fs"
+    # url = "https://www.kayak.com/flights/CDG-JFK/2022-01-16/2022-01-21?sort=bestflight_a&fs"
 
     browser.get(url)
     reponse = requests.get(url)
@@ -127,7 +127,7 @@ def open_flight():
                       })
 
     df['date recup data'] = datetime.datetime.now()
-    # df['id_flight'] = start+"_"+destination+"_"+debut_str+"_"+fin
+    df['id_flight'] = start+"_"+destination+"_"+debut_str+"_"+fin
 
     #fermeture du navigateur 
     #browser.close()
@@ -151,6 +151,7 @@ if __name__ == '__main__':
     # print(df)
     # print(df.dtypes)
     
+
     scheduler = BlockingScheduler()
     scheduler.add_job(open_flight, 'interval', minutes=1)
     scheduler.start()
