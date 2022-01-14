@@ -131,9 +131,9 @@ def open_flight():
 
     #fermeture du navigateur 
     #browser.close()
-    data_pipe(df)
+    # data_pipe(df)
     #la fonction retourne un dataframe de tout les vols contenu dans la page qui nous interesse 
-    # return df 
+    return df 
 
 if __name__ == '__main__':
 
@@ -147,11 +147,11 @@ if __name__ == '__main__':
     #appel de la fonction ouvrant la page a scraper
     # df = open_flight(start, arrive, debut, 5)
     # open_flight(start, arrive, debut, 5)
-    # open_flight()
-    # print(df)
-    # print(df.dtypes)
+    df = open_flight()
+    print(df)
+    print(df.dtypes)
     
-    scheduler = BlockingScheduler()
-    scheduler.add_job(open_flight, 'interval', minutes=1)
-    scheduler.start()
+    # scheduler = BlockingScheduler()
+    # scheduler.add_job(open_flight, 'interval', minutes=1)
+    # scheduler.start()
 
