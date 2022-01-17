@@ -6,9 +6,6 @@ from bs4 import BeautifulSoup
 import requests
 import re
 from mongo_pipe import data_pipe
-import schedule
-import time
-from apscheduler.schedulers.blocking import BlockingScheduler
 
 # def open_flight(start, destination, debut, duration):
 def open_flight():
@@ -32,7 +29,7 @@ def open_flight():
 
     #generation de l'url du vol attendu
     # url = "https://www.kayak.com/flights/"+ start + "-" + destination + "/" + debut_str+ "/" + fin + "?sort=bestflight_a&fs"
-    url = "https://www.kayak.com/flights/CDG-JFK/2022-01-16/2022-01-21?sort=bestflight_a&fs"
+    url = "https://www.kayak.com/flights/CDG-JFK/2022-04-04/2022-04-09?sort=bestflight_a&fs"
 
     browser.get(url)
     reponse = requests.get(url)
@@ -89,6 +86,8 @@ def open_flight():
 
     for i in range(len(heure_list)):
         value = heure_list[i].getText().replace("\n","")
+        if len(value) < 8:
+            value = '0'+ value
         heure.append(value)
 
     heure = heure[::2]
@@ -102,6 +101,9 @@ def open_flight():
 
     for i in range(len(temps_list)):
         value = temps_list[i].getText().replace('\n','')
+        # print("length of value is {}".format(len(value)))
+        if len(value) < 8:
+            value = '0'+ value
         temps.append(value)
 
     temps = temps[3::4]
@@ -128,28 +130,29 @@ def open_flight():
 
     df['date recup data'] = datetime.datetime.now()
     # df['id_flight'] = start+"_"+destination+"_"+debut_str+"_"+fin
+    df['id_flight'] = "CDG_JFK_2022-04-04_2022-04-09"
 
     #fermeture du navigateur 
     #browser.close()
-    # data_pipe(df)
-    #la fonction retourne un dataframe de tout les vols contenu dans la page qui nous interesse 
-    return df 
 
-if __name__ == '__main__':
+    #appele de la fonction de redirection en base de donnée
+    data_pipe(df)
 
-    #parametre selectionné pour le vol souhaité
-    start = 'CDG'
-    arrive = 'JFK'
-    debut = datetime.datetime.now() + timedelta(days=3)
-    debut_str = debut.strftime("%Y-%m-%d")
+# if __name__ == '__main__':
 
-    print('Scraping for origin: {} and destination: {}, for date: {}'.format(start, arrive, debut_str))
-    #appel de la fonction ouvrant la page a scraper
-    # df = open_flight(start, arrive, debut, 5)
-    # open_flight(start, arrive, debut, 5)
-    df = open_flight()
-    print(df)
-    print(df.dtypes)
+#     #parametre selectionné pour le vol souhaité
+#     start = 'CDG'
+#     arrive = 'JFK'
+#     debut = datetime.datetime.now() + timedelta(days=3)
+#     debut_str = debut.strftime("%Y-%m-%d")
+
+#     print('Scraping for origin: {} and destination: {}, for date: {}'.format(start, arrive, debut_str))
+#     #appel de la fonction ouvrant la page a scraper
+#     # df = open_flight(start, arrive, debut, 5)
+#     # open_flight(start, arrive, debut, 5)
+#     df = open_flight()
+#     print(df)
+#     print(df.dtypes)
     
     # scheduler = BlockingScheduler()
     # scheduler.add_job(open_flight, 'interval', minutes=1)
