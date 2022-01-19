@@ -5,3 +5,18 @@ Comment on ecrit du HTML en a l'aide de 'flask' (est ce que je doit ecrire dans 
 Comment faire le lien avec mongo (motrer les 2 type de code que j'ai)
 
 
+
+
+
+
+##################################
+Idees
+
+gestion des docker-compose, la base de données mongo dois etre stoké dans le docker a l'aide du json qui sera issue du scrap réalisé sur la semaine de test
+
+bien expliquer comment le scrap a lieu, comment a t'il était organisé ect...
+
+
+ 
+
+
