@@ -1,3 +1,5 @@
+flask_pymongo
+flask_mongoengine
 pymongo
 jupyter
 pandas

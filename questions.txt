@@ -1,0 +1,7 @@
+Est ce que je peux utiliser dash (si oui y a t'il un lien entre mongo et dash) ?
+
+Comment on ecrit du HTML en a l'aide de 'flask' (est ce que je doit ecrire dans des fichiers html a coté ou dans le dossier)
+
+Comment faire le lien avec mongo (motrer les 2 type de code que j'ai)
+
+
