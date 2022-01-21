@@ -1,6 +1,66 @@
 h1 {
-    border: 2px #eee solid;
-    color: brown;
-    text-align: center;
-    padding: 10px;
+    align-self: center;
+    position: absolute;
+    left: 680px;
 }
+
+.logo{
+    display: none;
+}
+
+.menu{
+    display: none;
+    width: 150px;
+    height: auto;
+    position: relative;
+    top: 70px;
+    right: 29px;
+    background-color: #7D8597;
+    border-radius: 4px;
+}
+
+.burger{
+    margin-left: 3%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#cross{
+    margin-left: 3.4%;
+    margin-bottom: 13px;
+    display: none;
+    cursor: pointer; 
+    /* border: 2px solid black;    */
+}
+
+.burger h3{
+    vertical-align: middle;
+    font-size: 4rem;
+}
+
+#cross h3{
+    vertical-align: middle;
+    font-size: 3rem;
+}
+
+header{
+    background-color: #33415C;
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    height: 100px;
+}
+
+nav li{
+    margin-top: 5px;
+    list-style: none;
+}
+
+nav li a{
+    text-decoration: none;
+    color : #33415C;
+}
+
+/* body{
+    background-color: #979DAC;
+} */
