@@ -1,3 +1,4 @@
+from lib2to3.pgen2 import token
 from flask import Flask, render_template
 import pymongo
 from flask_pymongo import PyMongo
@@ -7,7 +8,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    token = "pk.eyJ1Ijoicm9tYXgxIiwiYSI6ImNreXBxcGl5MTBjcWoycm1tMzNiMnozOGsifQ.m7f5Grd8oEAIONeVUT4bww"
+    return render_template("index.html", token = token)
 
 @app.route("/about.html")
 def about():

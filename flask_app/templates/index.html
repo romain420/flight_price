@@ -4,13 +4,24 @@
     <meta charset="utf-8">
     <title>Home page</title>
     <link rel="stylesheet" href="../static/css/home.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
   </head>
   <body>
     {% extends 'base.html' %}
 
     {% block content %}
+
+    <script src="../static/js/map.js"></script>
       <section id = "index_corp">
-        
+          <div id = "home_map" width="25%" style='height:400px'></div>
+          <script>
+            mapboxgl.accessToken = '{{token}}';
+            var home_map = new mapboxgl.Map({
+             container: 'home_map',
+             style: 'mapbox://styles/mapbox/streets-v10'
+            });
+           </script>
       </section>
     {% endblock %}
   </body>

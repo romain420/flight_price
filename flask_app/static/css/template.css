@@ -17,6 +17,7 @@ h1 {
     right: 29px;
     background-color: #7D8597;
     border-radius: 4px;
+    z-index: 10;
 }
 
 .burger{
