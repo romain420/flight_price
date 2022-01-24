@@ -65,3 +65,9 @@ nav li a{
 /* body{
     background-color: #979DAC;
 } */
+
+footer{
+    background-color: #001233;
+    color: #979DAC;
+    height: 200px;
+}

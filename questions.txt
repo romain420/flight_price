@@ -16,7 +16,7 @@ gestion des docker-compose, la base de données mongo dois etre stoké dans le d
 
 bien expliquer comment le scrap a lieu, comment a t'il était organisé ect...
 
-
+faire un shell script qui delete et mes a jour la base dedonner a l'aide de fichier json (optionnel voir avec la base docker) 
  
 
 
