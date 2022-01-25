@@ -1,7 +1,0 @@
-flask_pymongo
-flask_mongoengine
-jupyter
-pandas
-selenium
-pymongo
-schedule

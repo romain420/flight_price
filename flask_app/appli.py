@@ -1,5 +1,5 @@
 from lib2to3.pgen2 import token
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import pymongo
 from flask_pymongo import PyMongo
 from pymongo import MongoClient
@@ -52,7 +52,7 @@ def data_recup():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=2745) 
+    app.run(host="0.0.0.0", debug=True, port=5000) 
 
 # app.config["MONGO_URI"] = "mongodb://localhost:27017/dataEngineering"
 # app.config['MONGO_DBNAME'] = 'project_collection'
