@@ -30,7 +30,9 @@ def about():
 @app.route("/price_comp.html")
 def price_comp():
     test = recup()
-    return render_template("price_comp.html", test = test)
+    price, hours = list_price()
+    price_day, day_week = mean_price_day()
+    return render_template("price_comp.html",title='Flight price hour-per-hours', max=1250, test = test, price = price, hours=hours, price_day=price_day, day_week=day_week)
 
 @app.route('/bonjour')
 def bonjour():
