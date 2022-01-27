@@ -4,123 +4,221 @@
     <meta charset="utf-8">
     <title>Price comparator</title>
     <link rel="stylesheet" href="../static/css/price_comp.css">
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     {% extends "base.html" %}
     {% block content %}
-    <h2> About App </h2>
-    <p> This application is present to help you to choose the good flight</p>
-    <p> Yes this application get info from website about flight price from defferents application
-        It'll help you to know when is the best moment of the week to get a flight ect... </p>
-    <div>{{test}}</div>
-    <div>
-      <canvas id="myChart" width="1400" height="400"></canvas>
+    <section id='comparator_corp'>
+      <div id='explaination_part'>
+        <h2> About App </h2>
+        <p> This application is present to help you to choose the good flight</p>
+        <p> Yes this application get info from website about flight price from defferents application
+            It'll help you to know when is the best moment of the week to get a flight ect... </p>
+        <div>{{test}}</div>
+      </div>
+      <div id='per_day_mean' class = "day_mean">
+        <canvas id="per_day" width="700" height="400"></canvas>
+        <div id = "expli_graph1" class = "expli_graph">
+          <h2>Pris moyen d'un billet par jour</h2>
+          <p>{{text_per_day}}</p>
+        </div>
+      </div> 
+      <div id='per_day_mean_stop' class = "day_mean">
+        <canvas id="per_day_stop" width="700" height="400"></canvas>
+        <div id = "expli_graph" class = "expli_graph">
+          <h2>Pris moyen d'un billet par jour en fonction du nombre d'arret</h2>
+          <p>{{text_per_day}}</p>
+        </div>
+      </div>
 
-    </div>
-    <div id='per_day_mean'>
-      <canvas id="per_day" width="700" height="400"></canvas>
-    </div>
+      <form id='form_mean_day_id'>
+        <input type="radio" checked id="mean_per_day_allflight" name="all flight" value='allflight' class='form_mean_day'>
+        <label for="mean_per_day_allflight">Tous les vols</label><br>
+        <input type="radio" id="mean_per_day_1stop" name="all flight" value='1stops' class='form_mean_day'>
+        <label for="mean_per_day_1stop">Vol 1 stop</label>
+      </form>
 
+      <div id='per_hour_mean'>
+        <div id = "expli_graph2">
+          <div id = "explination_hph">
+            <h2>Pris moyen d'un billet par heur par heur</h2>
+            <p>{{text_per_hour}}</p>
+          </div>
+          <div id="block_canvas_hph">
+            <canvas id="per_hour_tuesday" width="700" height="400"></canvas>
+            <canvas id="per_hour_saturday" width="700" height="400"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <script>
       ////////////////////////////////////////////////
-      // bar chart data
-      var barData = {
-        labels : [
-          {% for item in hours %}
-            "{{ item }}",
-          {% endfor %}
-        ],
+      const labels1 = [
+                {% for item in day_week %}
+                "{{ item }}",
+                {% endfor %}
+      ];
 
-        datasets : [{
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
-          pointHighlightStroke: "rgba(151,187,205,1)",
-          bezierCurve : false,
-          data : [
-	    {% for item in price %}
-              {{ item }},
-            {% endfor %}]
-          }
-	]
-      }
-
-      Chart.defaults.global.animationSteps = 50;
-      Chart.defaults.global.tooltipYPadding = 16;
-      Chart.defaults.global.tooltipCornerRadius = 0;
-      Chart.defaults.global.tooltipTitleFontStyle = "normal";
-      Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
-      Chart.defaults.global.animationEasing = "easeOutBounce";
-      Chart.defaults.global.responsive = false;
-      Chart.defaults.global.scaleLineColor = "black";
-      Chart.defaults.global.scaleFontSize = 16;
-
-      // get bar chart canvas
-      var mychart = document.getElementById("myChart").getContext("2d");
-
-      steps = 10
-      max = {{ max }}
-      // draw bar chart
-      var LineChartDemo = new Chart(mychart).Line(barData, {
-        scaleOverride: true,
-        scaleSteps: steps,
-        scaleStepWidth: Math.ceil(max / steps),
-        scaleStartValue: 0,
-        scaleShowVerticalLines: true,
-        scaleShowGridLines : true,
-        barShowStroke : true,
-        scaleShowLabels: true,
-        bezierCurve: false,
-      });
-      ////////////////////////////////////////////////
-
-      ////////////////////////////////////////////////
-      // bar chart data
-      var barData = {
-        labels : [
-          {% for item in day_week %}
-           "{{ item }}",
-          {% endfor %}
-	],
-
-        datasets : [{
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          data : [
-            {% for item in price_day %}
-               "{{ item }}",
+      const data1 = {
+        labels: labels1,
+        datasets: [{
+          label: 'Prix moyen par jour',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderColor: 'rgba(153, 102, 255)',
+          borderWidth: 1,
+          data: [
+              {% for item in price_day %}
+                "{{ item }}",
               {% endfor %}
-	    ]
-          }
-        ]
-      }
+            ],
+        }]
+      };
 
-     // get bar chart canvas
-     var mychart = document.getElementById("per_day").getContext("2d");
+      const config1 = {
+        type: 'bar',
+        data: data1,
+        options: {
+          responsive: false
+        }
+      };
 
-       steps = 10
-       max = 850
-
-     // draw bar chart
-     new Chart(mychart).Bar(barData, {
-       scaleOverride: true,
-       scaleSteps: steps,
-       scaleStepWidth: Math.ceil(max / steps),
-       scaleStartValue: 0,
-       scaleShowVerticalLines: true,
-       scaleShowGridLines : true,
-       barShowStroke : true,
-       scaleShowLabels: true
-       }
-     );
+      const myChart1 = new Chart(
+        document.getElementById('per_day').getContext("2d"),
+        config1
+      );
      ////////////////////////////////////////////////
-    </script>
 
+     ////////////////////////////////////////////////
+      const labels = [
+                {% for item in heure_nbstop %}
+                "{{ item }}",
+                {% endfor %}
+      ];
+
+      const data = {
+        labels: labels,
+        datasets: [{
+          label: 'Prix moyen avec 1 arrêt',
+          backgroundColor: [
+                {% for item in color %}
+                "{{ item }}",
+                {% endfor %}
+          ],
+          borderColor: ['rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)',
+                      'rgba(255, 205, 86, 1)',
+                      'rgba(54, 162, 235, 1)'],
+          borderWidth: 1,
+          data: [
+              {% for item in price_nbstop %}
+                "{{ item }}",
+              {% endfor %}
+            ],
+        }]
+      };
+
+      const config = {
+        type: 'bar',
+        data: data,
+        options: {
+          responsive: false
+        }
+      };
+
+      const myChart = new Chart(
+        document.getElementById('per_day_stop').getContext("2d"),
+        config
+      );
+      ////////////////////////////////////////////////
+
+      ////////////////////////////////////////////////
+      const labels2 = [
+                {% for item in hour_t %}
+                "{{ item }}",
+                {% endfor %}
+      ];
+
+      const data2 = {
+        labels: labels2,
+        datasets: [{
+          label: 'Moyenne de prix heure par haure le Mardi',
+          backgroundColor: 'rgba(255, 99, 132, 0.2)',
+          borderColor: 'rgba(255, 99, 132)',
+          borderWidth: 1,
+          data: [
+              {% for item in price_t %}
+                "{{ item }}",
+              {% endfor %}
+            ],
+        }]
+      };
+
+      const config2 = {
+        type: 'line',
+        data: data2,
+        options: {
+          responsive: false
+        }
+      };
+
+      const myChart2 = new Chart(
+        document.getElementById('per_hour_tuesday').getContext("2d"),
+        config2
+      );
+      ////////////////////////////////////////////////
+
+      ////////////////////////////////////////////////
+      const labels3 = [
+                {% for item in hour_s %}
+                "{{ item }}",
+                {% endfor %}
+      ];
+
+      const data3 = {
+        labels: labels3,
+        datasets: [{
+          label: 'Moyenne de prix heure par haure le Samedi',
+          backgroundColor: 'rgba(153, 102, 255, 0.2)',
+          borderColor: 'rgba(153, 102, 255)',
+          borderWidth: 1,
+          data: [
+              {% for item in price_s %}
+                "{{ item }}",
+              {% endfor %}
+            ],
+        }]
+      };
+
+      const config3 = {
+        type: 'line',
+        data: data3,
+        options: {
+          responsive: false
+        }
+      };
+
+      const myChart3 = new Chart(
+        document.getElementById('per_hour_saturday').getContext("2d"),
+        config3
+      );
+      ////////////////////////////////////////////////
+    </script>
+    <script src="../static/js/comparator.js"></script>
     {% endblock %}
   </body>
 </html>

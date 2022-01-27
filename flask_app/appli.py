@@ -29,10 +29,51 @@ def about():
 
 @app.route("/price_comp.html")
 def price_comp():
+    text_per_day = '''
+    Il s'agit la d'un histogramme qui donne le prix moyen d'un billet par jour sur tout la duré du temps de scrapping.  
+
+    A l'aide de cette histogramme on peut déduire les jours pour lesquel il est le plus interressant d'acheter son billet d'avion.
+
+    Dans notre cas il s'agit du Mardi et du Samedi.
+    '''
     test = recup()
     price, hours = list_price()
     price_day, day_week = mean_price_day()
-    return render_template("price_comp.html",title='Flight price hour-per-hours', max=1250, test = test, price = price, hours=hours, price_day=price_day, day_week=day_week)
+    price_nbstop, heure_nbstop, nb_stop = mean_price_day_nbvol()
+    color_nbstop = ['rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(54, 162, 235, 0.2)']
+    price_s, hour_s, price_t, hour_t = hour_mean_price()
+    return render_template("price_comp.html",
+                            title='Flight price hour-per-hours',
+                            max=1250,
+                            test = test, 
+                            price = price, 
+                            hours=hours, 
+                            price_day=price_day, 
+                            day_week=day_week, 
+                            text_per_day = text_per_day,
+                            price_nbstop = price_nbstop,
+                            heure_nbstop = heure_nbstop,
+                            nb_stop = nb_stop,
+                            color = color_nbstop,
+                            price_s=price_s,
+                            hour_s = hour_s,
+                            price_t=price_t,
+                            hour_t=hour_t)
+
 
 @app.route('/bonjour')
 def bonjour():
