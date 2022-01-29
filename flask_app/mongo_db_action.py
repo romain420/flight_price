@@ -2,7 +2,9 @@ import pymongo
 import json
 from pymongo import MongoClient
 import pandas as pd
-
+import pymongo
+from bson.json_util import dumps
+from bson.json_util import loads
 
 #################################################################
 #fonction de la page racine
@@ -102,4 +104,24 @@ def hour_mean_price():
     price_tuesday = tuesday_df['price'].tolist()
     hours_tuesday= tuesday_df['time'].tolist()
     return price_saturday, hours_saturday, price_tuesday, hours_tuesday
+
+def flinght_info(nb_stop):
+    client = pymongo.MongoClient('mongo')
+    database = client['dataEngineering']
+    collection = database['app_db']
+    less_nonstop = collection.find({'Nb stop alle' : { "$eq": nb_stop } },{
+                'Compagnie alle':1,
+                'Compagnie retour':1,
+                'Nb stop alle':1,
+                'Nb stop retour': 1,
+                'Heure depart alle': 1,
+                'Heure depart retour': 1,
+                'Temps trajet alle': 1,
+                'Temps trajet retour': 1,
+                'price': 1}).sort("price",1).limit(3)
+    json_less = loads(dumps(less_nonstop))
+    value_flight=[]
+    for i in range(len(json_less)):
+        value_flight.append(list(json_less[i].values()))
+    return value_flight[0]
     

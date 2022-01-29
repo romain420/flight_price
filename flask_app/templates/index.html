@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../static/css/home.css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+    <link rel="icon" type="image/png" href="../static/image/favicomatic/favicon-32x32.png" sizes="32x32" />
   </head>
   <body>
     {% extends 'base.html' %}
@@ -15,21 +16,32 @@
     <script src="../static/js/map.js"></script>
       <section id = "index_corp">
         <div id = "left_side_hp">
-          <div id = "home_map"></div>
-          <div class="dropdown show">
-            <a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
-            </a>
-          
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item">Action</a>
-              <a class="dropdown-item">Another action</a>
-              <a class="dropdown-item">Something else here</a>
-            </div>
+          <div id="explication_map" class="dropdown show">
+            <h4>Vol Paris New-York</h4>
+            <p>Il s'agit d'un vol en Paris : </p>
+            <p>'CDG' : '2.5479', '49.0097'</p>
+            <p>    et </p>
+            <p>'JFK' : '-73.7807', '40.6420'</p>
           </div>
+          <div id = "home_map"></div>
+          
         </div>
         <div id = "right_side_hp">
-          <div id = "explication_text">{{text_content}}</div>
+          <h2>Explication de l'application</h2>
+          <p>Cette application a été réalisé pour un projet de 'data-Engineering' permettant de comparer des prix de billet d'avion pour savoir quelle
+            était le moment le plus intérressant pour en acheter un mais aussi pour savoir lequel été le moins chère et qu'elles sont les caractèristique qui lui donne ce prix.
+          </p>
+          <p>Pour ce faire nous avons récupéré des données (scrappé) pendant plus d'une semaine sans intéruption à une fréquence d'un scrap tout les 10 minutes sur
+            le site de 'Kayak' un revendeur de billets de voyage (billet d'avions, trains, hotels...).
+          </p>
+          <p>Nous nous sommes contenté de scrapper et de récuperer les données de leur site sur le vol qui nous interressé, Paris (CDG) -> New-York (JFK) dans un premier temps comme affiché sur la carte de gauche,
+            d'autre seront progressivement ajouté au cours du dévelopement de l'appli (si vous avez des suggestions n'hésitez pas à nous en faire par sur le github du projet).
+          </p>
+          <p>
+            Nous avons donc ensuite tenter de tirer un maximum d'informations des données scrappé. Pour ce faire nous vous proposons de vous rendre sur la page de comparaison,
+            pour vous rendre compte des diffèrentes informations qui ont été tirré des donnée (les jours et heures les plus interressant, les variables qui influe le plus sur le prix du billet...)
+          </p>
+          <p>Nous éspérons que ce site pourra vous aider pour vos futur achat de billet d'avion, ou tout simplement qui vous à apris quelque trucs sur la fluctuation des prix en fonction du moment de la semaine ou de la journée à laquelle vous le regardez.</p>
         </div>
 
         <!-- rajouter le nombre de vol sur le quelle on a les info, le temps passer a recolter les données, les site scrapper pour les récuperer-->

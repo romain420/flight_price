@@ -26,7 +26,8 @@
 
 .expli_graph{
     width: 650px;
-    margin-top: 100px;
+    margin-top: 50px;
+    text-align: justify;
 }
 
 #form_mean_day_id{
@@ -41,7 +42,9 @@
 }
 
 #explination_hph{
-    padding-top: 200px;
+    padding-top: 120px;
+    width: 650px;
+    text-align: justify;
 }
 
 #comparator_corp{
@@ -49,5 +52,25 @@
 }
 
 #explaination_part{
-    padding-bottom: 2%;
+    padding: 3% 5% 2% 5%;
+    font-family: 'roboto';
+}
+
+.best_price{
+    background-color: #001845;
+    color: #edf2fb;
+    width: 1600px;
+    height: 120px;
+    text-align: center;
+    padding:1.4% 2% 2% 2%;
+    margin: 2% 2% 2% 2%;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    font-family: 'roboto';
+}
+
+.best_price_tittle{
+    color: #001845;
+    font-family: 'roboto';
+    text-align: center;
 }

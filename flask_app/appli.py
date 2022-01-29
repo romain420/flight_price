@@ -36,6 +36,18 @@ def price_comp():
 
     Dans notre cas il s'agit du Mardi et du Samedi.
     '''
+    text_per_hour = '''
+    Les deux graph de gauche nous permettent d'avoir une vision plus précise sur le prix des billets à chaque heure de la journée.
+
+    Dans le premier graph, en rose, nous avons les informations du pris moyen d'un billet avec un arrêt heure par heure.
+    C'est la même lecture pour le graph violet qui lui montre l'évolution au niveau de la journée du samedi.
+
+    Sur c'est 2 journée la quantité de vol sans arrêt et trop peu importante pour être affiché dans nos graph, c'est la raison pour laquel vous ne les voyez donc pas.
+    En revanche, nous pouvons déduire un grand nombre de chose de ces 2 graphs. Pour ce qui est du Mardi, on constate que l'heure la plus propice 
+    pour acheter un billet et soit le matin à certaines heures précise, soit dans tout la durée de l'après midi/début de soiré (de 14 à 21h), avec un minum à 16h.
+    En revanche pour ce qui est du samedi, il vaut mieux prendre sous billet le matin (entre 5h et 13h), même si le moment le moins cher de la journée est à 17h.
+    Mais cette heure est assez aproximative au vue de la moyenne des prix des heures qui l'entour.    
+    '''
     test = recup()
     price, hours = list_price()
     price_day, day_week = mean_price_day()
@@ -56,6 +68,25 @@ def price_comp():
                     'rgba(255, 205, 86, 0.2)',
                     'rgba(54, 162, 235, 0.2)']
     price_s, hour_s, price_t, hour_t = hour_mean_price()
+    aucun_stop = 'nonstop'
+    arret_1 = '1stop'
+    list_san_arret = flinght_info(aucun_stop)
+    list_1_arret = flinght_info(arret_1)
+    # comp_alle_sans_arret = list_san_arret[1]
+    # comp_alle_1_arret = list_1_arret[1]
+    # comp_retour_sans_arret = list_san_arret[2]
+    # comp_retour_1_arret = list_1_arret[2]
+    # heur_depart_aller_sa = list_san_arret[5]
+    # heur_depart_retour_sa = list_san_arret[6]
+    # heur_depart_aller_aa = list_1_arret[5]
+    # heur_depart_retour_aa = list_1_arret[6]
+    # temps_trajet_alle_sa = list_san_arret[7]
+    # temps_trajet_retour_sa = list_san_arret[8]
+    # temps_trajet_alle_aa = list_1_arret[7]
+    # temps_trajet_retour_aa = list_1_arret[8]
+    # price_sa = list_san_arret[9]
+    # price_aa = list_1_arret[9]
+
     return render_template("price_comp.html",
                             title='Flight price hour-per-hours',
                             max=1250,
@@ -72,7 +103,22 @@ def price_comp():
                             price_s=price_s,
                             hour_s = hour_s,
                             price_t=price_t,
-                            hour_t=hour_t)
+                            hour_t=hour_t,
+                            text_per_hour = text_per_hour,
+                            comp_alle_sans_arret=list_san_arret[1],
+                            comp_alle_1_arret = list_1_arret[1],
+                            comp_retour_sans_arret = list_san_arret[2],
+                            comp_retour_1_arret = list_1_arret[2],
+                            heur_depart_aller_sa = list_san_arret[5],
+                            heur_depart_retour_sa = list_san_arret[6],
+                            heur_depart_aller_aa = list_1_arret[5],
+                            heur_depart_retour_aa = list_1_arret[6],
+                            temps_trajet_alle_sa = list_san_arret[7],
+                            temps_trajet_retour_sa = list_san_arret[8],
+                            temps_trajet_alle_aa = list_1_arret[7],
+                            temps_trajet_retour_aa = list_1_arret[8],
+                            price_sa = list_san_arret[9],
+                            price_aa = list_1_arret[9])
 
 
 @app.route('/bonjour')

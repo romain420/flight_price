@@ -23,14 +23,15 @@
 }
 
 #right_side_hp{
-    background-color: coral;
+    font-family: 'roboto';
     width: 45%;
+    text-align: justify;
 }
-
+/* 
 #explication_text{
     margin: 2%;
 
-}
+} */
 
 #app_stat{
     display: flex;
@@ -91,4 +92,11 @@ img {
 
 #scrap_source{
     text-align: center !important;
+}
+
+#explication_map{
+    font-family: 'roboto';
+    padding-top: 100px;
+    padding-right: 45px;
+    text-align: center;
 }
