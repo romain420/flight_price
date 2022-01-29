@@ -1,0 +1,102 @@
+/* #index_corp{
+    display: none; 
+} */
+
+#home_map{
+    background-color: blue;
+    width: 600px;
+    height: 400px;
+    border-radius: 5px;
+}
+
+#left_side_hp{
+    display: flex;
+    flex-flow: row;
+}
+
+#index_corp{
+    display: flex;
+    flex-flow: row;
+    background-color: #edf2fb;
+    justify-content: space-around;
+    padding-top: 3%;
+}
+
+#right_side_hp{
+    font-family: 'roboto';
+    width: 45%;
+    text-align: justify;
+}
+/* 
+#explication_text{
+    margin: 2%;
+
+} */
+
+#app_stat{
+    display: flex;
+    flex-flow: row;
+    background-color: #edf2fb;
+    justify-content: space-around;
+    padding-top: 3%;
+    padding-bottom: 150px;
+}
+
+#nb_vol_info{
+    text-align: center;
+}
+
+/* parti nombre de vol */
+#nb_vol_phrase{
+    font-family: 'roboto';
+    font-size: 2rem;
+    color: #33415C;
+}
+
+#nb_vol_int{
+    font-size: 3rem;
+    color: #0353A4;
+}
+
+/* parti temps de minage*/
+#heur_minage{
+    font-family: 'roboto';
+    font-size: 2rem;
+    color: #33415C;
+}
+
+#heur_int{
+    font-size: 2.5rem;
+    color: #0353A4;
+}
+
+/* class de l'image */
+#compagnie_scrap{
+    width:400px;
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+
+img {
+    width: 100%; 
+    max-height: auto; 
+    padding : auto;
+}
+
+#site_phrase{
+    font-family: 'roboto';
+    font-size: 2rem;
+    color: #33415C;
+}
+
+#scrap_source{
+    text-align: center !important;
+}
+
+#explication_map{
+    font-family: 'roboto';
+    padding-top: 100px;
+    padding-right: 45px;
+    text-align: center;
+}

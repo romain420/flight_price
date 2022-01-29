@@ -1,0 +1,95 @@
+h1 {
+    align-self: center;
+    position: absolute;
+    left: 680px;
+}
+
+.logo{
+    display: none;
+}
+
+.menu{
+    display: none;
+    width: 150px;
+    height: auto;
+    position: relative;
+    top: 70px;
+    right: 29px;
+    background-color: #7D8597;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.burger{
+    margin-left: 3%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#cross{
+    margin-left: 3.4%;
+    margin-bottom: 13px;
+    display: none;
+    cursor: pointer; 
+    /* border: 2px solid black;    */
+}
+
+.burger h3{
+    vertical-align: middle;
+    font-size: 4rem;
+}
+
+#cross h3{
+    vertical-align: middle;
+    font-size: 3rem;
+}
+
+header{
+    background-color: #33415C;
+    align-items: center;
+    display: flex;
+    flex-flow: row;
+    height: 100px;
+}
+
+nav li{
+    margin-top: 5px;
+    list-style: none;
+}
+
+nav li a{
+    text-decoration: none;
+    color : #33415C;
+}
+
+/* body{
+    background-color: #979DAC;
+} */
+
+footer{
+    background-color: #001233;
+    color: #edf2fb;
+    height: 200px;
+    padding: 25px;
+    font-family: 'roboto';
+}
+
+#github_link{
+    text-decoration: none;
+    color:#edf2fb;
+    background: url('https://s2.qwant.com/thumbr/0x380/d/a/063438c2c6cd5c967475c5f6edf5a64b26801f12f47807a930a2c78b2425ae/github-logo-png-white-github-11-icon-free-white-social-icons-512x512.png?u=https%3A%2F%2Fpluspng.com%2Fimg-png%2Fgithub-logo-png-white-github-11-icon-free-white-social-icons-512x512.png&q=0&b=1&p=0&a=0') no-repeat 100% 0;
+    background-size: 20px 20px;
+    padding-right: 19px;
+    padding-left: 3%;
+}
+
+#kayak_link{
+    /* text-decoration: none;
+    color:#edf2fb;
+    background: url('https://s2.qwant.com/thumbr/700x0/4/3/1db642990e4193dda4aad71dfaf863d6a0484b511db84a4cc0357acc6adb3f/kayak-logo.png?u=https%3A%2F%2Fwww.kayak.com%2Frimg%2Fprovider-logos%2Fcommon%2Fsocialmedia%2Fkayak-logo.png%3Fwidth%3D1200%26hheight%3D630%26crop%3Dfalse&q=0&b=1&p=0&a=0') no-repeat 100% 0;
+    background-size: 20px 20px; */
+    padding-right: 19px;
+    text-decoration: none;
+    color:#edf2fb;
+    padding-left: 3%; 
+}

@@ -1,0 +1,22 @@
+Est ce que je peux utiliser dash (si oui y a t'il un lien entre mongo et dash) ?
+
+Comment on ecrit du HTML en a l'aide de 'flask' (est ce que je doit ecrire dans des fichiers html a coté ou dans le dossier)
+
+Comment faire le lien avec mongo (motrer les 2 type de code que j'ai)
+
+
+
+
+
+
+##################################
+Idees
+
+gestion des docker-compose, la base de données mongo dois etre stoké dans le docker a l'aide du json qui sera issue du scrap réalisé sur la semaine de test
+
+bien expliquer comment le scrap a lieu, comment a t'il était organisé ect...
+
+faire un shell script qui delete et mes a jour la base dedonner a l'aide de fichier json (optionnel voir avec la base docker) 
+ 
+
+

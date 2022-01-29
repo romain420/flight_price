@@ -1,0 +1,76 @@
+/* css pour la page de comparaison de prix */
+
+#per_day_mean{
+    display: flex;
+}
+/* #per_day_stop{
+    width: 700px !important;
+    height: 400px !important;
+} */
+
+/* #per_day_mean_stop{
+    display: none;
+}    */
+/* 
+#expli_graph1{
+    width: 650px;
+    margin-top: 100px;
+} */ 
+
+.day_mean{
+    flex-flow: row;
+    margin: 1%;
+    justify-content: space-around;
+    font-family: 'roboto';
+}
+
+.expli_graph{
+    width: 650px;
+    margin-top: 50px;
+    text-align: justify;
+}
+
+#form_mean_day_id{
+    padding-left: 450px;
+}
+#expli_graph2{
+    display: flex;
+    flex-flow: row;
+    margin: 3%;
+    justify-content: space-around;
+    font-family: 'roboto';
+}
+
+#explination_hph{
+    padding-top: 120px;
+    width: 650px;
+    text-align: justify;
+}
+
+#comparator_corp{
+    background-color: #edf2fb;
+}
+
+#explaination_part{
+    padding: 3% 5% 2% 5%;
+    font-family: 'roboto';
+}
+
+.best_price{
+    background-color: #001845;
+    color: #edf2fb;
+    width: 1600px;
+    height: 120px;
+    text-align: center;
+    padding:1.4% 2% 2% 2%;
+    margin: 2% 2% 2% 2%;
+    font-size: 1.6rem;
+    border-radius: 50px;
+    font-family: 'roboto';
+}
+
+.best_price_tittle{
+    color: #001845;
+    font-family: 'roboto';
+    text-align: center;
+}
