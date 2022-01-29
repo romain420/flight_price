@@ -52,6 +52,36 @@ A prèsent il ne nous reste plus cas ouvrir un navigateur (Chrome, Firefox...) e
 
 L'application est actuellement constitué de deux page différents. 
 
-Une page d'accuile donnat une explication général ainsi que quelque information chiffré sur l'application :
+Une page d'accuile donnant une explication général ainsi que quelque information chiffré sur l'application :
 
+![home page](/home_page.png)
+
+Mais vous pouvez aussi vous rendre dans une page de comparaison  des vols récupérés, à l'aide du menu *burger* en haut à gauche, qui vous permettrons d'avoir des information plus specifique sur les prix des billets ainsi que les jours et les heures les plus interressantes pour les acheter.
+
+
+![comparaison page](/comp_page.png)
+
+Si vous avez des idées ou conseils pour améliorer ou ajouter du contenu à l'application n'hésitez pas à proposer des idées.
+
+
+## Le Scrapping des données :
+
+Pour le moment (et a notre grande tristesse) le scrapping n'est pas directement relier à la base de données de l'application, car **Docker** et **Selenium** ne sont pas très compatible. Nous avions trouvé une solution pour résoudre le problème, mais elle n'était pas viable à cause de l'endroit ou nous scrappions les données, le site de comparaison de billets [Kayak](https://kayak.com/). Nous avons donc du renoncer à cette solution pour le moment, mais nous cherchons activement une solution pour donner à l'application un aspect plus complet et interractif.
+
+Pour le moment nous avons utiliser une library de *scheduling* en pyhton pour nous permettre de lancer notre *scrappeur* pendant une semaine complète à interval de 10 minutes, se qui nous à permis de receuillir plus de 8000 vols.
+
+L'utilisation de la librairie à grandement diminué le champs des possible au niveau du scrapping. En effet, nous avions d'abord réalisé une fonction qui permettait de saisir : 
+
+- L'Aéroprt de départ/arrivé
+- Les dates de départ/arrivé
+
+Mais à cause de la librairie, nous ne pouvions pas choisir les déstinations ainsi que les dates, c'est la raison pour laquel nous avons dessidé de vous trouverais deux script de scrapping : *scrapping.py* (qui est celui que nous avons utilisé avec le schedeler) et *back.py* (qui est celui qui qui permet de gerer les différents champs).
+
+### Lancer le scrapping :
+
+Pour ca, il faut d'abord avoir *MongoDB* d'installer en local sur votre machine. Pour récuperer la donnée sur le site de kayak et la pipe dans Mongo de façon automatique (toute les 10 minutes), il faudrat que vous executiez le script *schedul.py* de la facon suivante : 
+```bash
+python schedul.py
+```
+Vous aurez les logs de chaque execution du script. Il se peut que le script générent des erreur (leur cause et pour le moment inconnue mais nous travaillons toujours à leurs résolution), or si le script de s'arrête pas complétement laisser le tourné l'erreur ne se reproduira certainement pas à la prochaine éxecution.
 
