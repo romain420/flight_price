@@ -30,23 +30,23 @@ def about():
 @app.route("/price_comp.html")
 def price_comp():
     text_per_day = '''
-    Il s'agit la d'un histogramme qui donne le prix moyen d'un billet par jour sur tout la duré du temps de scrapping.  
+    Il s'agit là d'un histogramme qui donne le prix moyen d'un billet par jour sur tout la durée du temps de scrapping.  
 
-    A l'aide de cette histogramme on peut déduire les jours pour lesquel il est le plus interressant d'acheter son billet d'avion.
+    A l'aide de cet histogramme on peut déduire les jours pour lesquels il est le plus intérressant d'acheter son billet d'avion.
 
     Dans notre cas il s'agit du Mardi et du Samedi.
     '''
     text_per_hour = '''
-    Les deux graph de gauche nous permettent d'avoir une vision plus précise sur le prix des billets à chaque heure de la journée.
+    Les deux graphes de gauche nous permettent d'avoir une vision plus précise sur le prix des billets à chaque heure de la journée.
 
-    Dans le premier graph, en rose, nous avons les informations du pris moyen d'un billet avec un arrêt heure par heure.
-    C'est la même lecture pour le graph violet qui lui montre l'évolution au niveau de la journée du samedi.
+    Dans le premier graphe, en rose, nous avons les informations du pris moyen d'un billet avec un arrêt heure par heure.
+    C'est la même lecture pour le graphe violet qui lui montre l'évolution au niveau de la journée du samedi.
 
-    Sur c'est 2 journée la quantité de vol sans arrêt et trop peu importante pour être affiché dans nos graph, c'est la raison pour laquel vous ne les voyez donc pas.
-    En revanche, nous pouvons déduire un grand nombre de chose de ces 2 graphs. Pour ce qui est du Mardi, on constate que l'heure la plus propice 
-    pour acheter un billet et soit le matin à certaines heures précise, soit dans tout la durée de l'après midi/début de soiré (de 14 à 21h), avec un minum à 16h.
-    En revanche pour ce qui est du samedi, il vaut mieux prendre sous billet le matin (entre 5h et 13h), même si le moment le moins cher de la journée est à 17h.
-    Mais cette heure est assez aproximative au vue de la moyenne des prix des heures qui l'entour.    
+    Sur c'est 2 journées la quantité de vol sans arrêt et trop peu importante pour être affiché dans nos graphes, c'est la raison pour laquelle vous ne les voyez donc pas.
+    En revanche, nous pouvons déduire un grand nombre de choses de ces 2 graphes. Pour ce qui est du Mardi, on constate que l'heure la plus propice 
+    pour acheter un billet et soit le matin à certaines heures précise, soit dans toute la durée de l'après midi/début de soirée (de 14 à 21h), avec un minimum à 16h.
+    En revanche pour ce qui est du samedi, il vaut mieux prendre son billet le matin (entre 5h et 13h), même si le moment le moins cher de la journée est à 17h.
+    Mais cette heure est assez approximative au vu de la moyenne des prix des heures qui l'entoure.    
     '''
     test = recup()
     price, hours = list_price()
